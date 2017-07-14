@@ -13,8 +13,13 @@
 from open_url import get_info_from_web
 from read_excel import duplicate_removal, overtime_money
 
-if __name__ == '__main__':
+
+def main(ID, start, end):
     # init_date = get_init_date()
-    init_date = get_info_from_web(start="2017/7/1", end="2017/7/13")
+    init_date = get_info_from_web(ID,start,end)
     after = duplicate_removal(init_date)
     overtime_money(after)
+
+
+if __name__ == '__main__':
+    main(ID='000107063', start="2017/5/1", end="2017/7/13")
