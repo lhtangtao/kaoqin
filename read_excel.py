@@ -103,5 +103,3 @@ def overtime_money(after_duplicate_removal):
     for i in range(len(weekend_overtime)):
         weekend_total = weekend_overtime[i] + weekend_total
     print u'周末加班时长为：' + str(weekend_total)
-
-
