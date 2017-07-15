@@ -46,10 +46,17 @@ def duplicate_removal(date):
     date_len = len(date)  # 数组的长度
     number_to_del = []
     for i in range(1, date_len - 1):
-        if date[i].day == date[i - 1].day & date[i].day == date[i + 1].day:
+        if date[i].day == date[i - 1].day & date[i].day == date[i + 1].day:  # 删除重复的考勤记录
+            number_to_del.append(i)
+        if date[i].day != date[i - 1].day and date[i].day != date[i + 1].day:  # 删除只有一次打卡记录的数据，一天只打一次卡就当作为大卡处理
             number_to_del.append(i)
     for i in range(len(number_to_del)):
         del date[number_to_del[i] - i]  # 删除重复的考勤记录
+    if date[0].day != date[1].day:  # 如果第一天只有一个考勤记录则删除
+        del date[0]
+    date_len = len(date)
+    if date[date_len - 1] != date[date_len - 2]:  # 如果最后一天只有一天考勤记录则删除
+        del date[date_len - 1]
     return date  # 返回去重后的数组
 
 
@@ -103,3 +110,10 @@ def overtime_money(after_duplicate_removal):
     for i in range(len(weekend_overtime)):
         weekend_total = weekend_overtime[i] + weekend_total
     print u'周末加班时长为：' + str(weekend_total)
+
+
+if __name__ == '__main__':
+    init_date = get_init_date()  # 从excel中读取数据
+    after = duplicate_removal(init_date)
+    print after
+    # overtime_money(after)
