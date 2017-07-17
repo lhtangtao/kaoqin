@@ -12,14 +12,16 @@
 """
 from open_url import get_info_from_web
 from read_excel import duplicate_removal, overtime_money, get_init_date
+import calendar
 
 
-def main(ID, start, end):
-    # init_date = get_init_date() # 从excel中读取数据
+def main(ID, month):
+    start = "2017/" + str(month) + "/1"
+    end = "2017/"+str(month)+"/" + str(calendar.monthrange(2017, month)[1])
     init_date = get_info_from_web(ID, start, end)  # 从浏览器中自动获取数据
     after = duplicate_removal(init_date)
     overtime_money(after)
 
 
 if __name__ == '__main__':
-    main(ID='0080157', start="2017/6/1", end="2017/6/30")
+    main(ID='0104035', month=6)

@@ -28,6 +28,7 @@ def get_info_from_web(ID="000107063", start="2017/06/01", end="2017/06/30"):
     time.sleep(1)
     driver.find_element_by_name("ctl07").click()  # 点击搜索按钮
     time.sleep(1)
+    print driver.find_element_by_xpath(".//*[@id='GridView1']/tbody/tr[2]/td[2]").text
     date_info = []
     for x in range(2, 12):
         xpath = ".//*[@id='GridView1']/tbody/tr[" + str(x) + "]/td[3]"
