@@ -55,7 +55,7 @@ def duplicate_removal(date):
     if date[0].day != date[1].day:  # 如果第一天只有一个考勤记录则删除
         del date[0]
     date_len = len(date)
-    if date[date_len - 1] != date[date_len - 2]:  # 如果最后一天只有一天考勤记录则删除
+    if date[date_len - 1].day != date[date_len-2].day:  # 如果最后一天只有一天考勤记录则删除
         del date[date_len - 1]
     return date  # 返回去重后的数组
 
