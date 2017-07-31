@@ -15,13 +15,17 @@ from read_excel import duplicate_removal, overtime_money, get_init_date
 import calendar
 
 
-def main(ID, month):
+def infos(ID, month):
     start = "2017/" + str(month) + "/1"
-    end = "2017/"+str(month)+"/" + str(calendar.monthrange(2017, month)[1])
+    end = "2017/" + str(month) + "/" + str(calendar.monthrange(2017, month)[1])
     init_date = get_info_from_web(ID, start, end)  # 从浏览器中自动获取数据
     after = duplicate_removal(init_date)
     overtime_money(after)
 
 
 if __name__ == '__main__':
-    main(ID='0104035', month=6)
+    # name_list = ["0068491", "0072927", "0101835 ", "0109084 ", "0080154", "0107063","0091742"]
+    # for i in range(0,len(name_list)):
+    #     infos(ID=name_list[i], month=7)
+    #     print "   "
+    infos(ID="71869", month=7)

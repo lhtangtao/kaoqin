@@ -90,8 +90,10 @@ def overtime_money(after_duplicate_removal):
                 overtime_day_verbose = float(overtime_day.split(":")[0])
                 weekday_overtime.append(overtime_day_verbose)
     for i in range(0, len(weekend_date), 2):  # 计算周末的加班和餐补
-        if weekend_date[i + 1] - weekend_date[i] >= datetime.timedelta(hours=4):  # 加班超过三小时才能拿餐补
+        if weekend_date[i + 1] - weekend_date[i] >= datetime.timedelta(hours=4):  # 周末加班超过4小时才能拿餐补
             subsidy = subsidy + 15
+            if weekend_date[i + 1] - weekend_date[i] >= datetime.timedelta(hours=8):
+                subsidy = subsidy + 15
         time_delay_weekend = weekend_date[i + 1] - weekend_date[i]
         overtime_day_weekend = str(time_delay_weekend)
         if int(overtime_day_weekend.split(':')[1]) >= 30:  # 如果加班时间有半小时多出
@@ -112,8 +114,3 @@ def overtime_money(after_duplicate_removal):
     print u'周末加班时长为：' + str(weekend_total)
 
 
-if __name__ == '__main__':
-    init_date = get_init_date()  # 从excel中读取数据
-    after = duplicate_removal(init_date)
-    print after
-    # overtime_money(after)
