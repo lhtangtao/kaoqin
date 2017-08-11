@@ -28,4 +28,4 @@ if __name__ == '__main__':
     # for i in range(0,len(name_list)):
     #     infos(ID=name_list[i], month=7)
     #     print "   "
-    infos(ID="71869", month=7)
+    infos(ID="0109084", month=8)
