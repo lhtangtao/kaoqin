@@ -46,7 +46,7 @@ def duplicate_removal(date):
     date_len = len(date)  # 数组的长度
     number_to_del = []
     for i in range(1, date_len - 1):
-        if date[i].day == date[i - 1].day & date[i].day == date[i + 1].day:  # 删除重复的考勤记录
+        if date[i].day == date[i - 1].day and date[i].day == date[i + 1].day:  # 删除重复的考勤记录
             number_to_del.append(i)
         if date[i].day != date[i - 1].day and date[i].day != date[i + 1].day:  # 删除只有一次打卡记录的数据，一天只打一次卡就当作为大卡处理
             number_to_del.append(i)
