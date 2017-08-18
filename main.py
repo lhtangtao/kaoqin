@@ -13,8 +13,8 @@
 from open_url import get_info_from_web
 from read_excel import duplicate_removal, overtime_money, get_init_date
 import calendar
-
-
+import argparse
+import sys
 def infos(ID, month):
     start = "2017/" + str(month) + "/1"
     end = "2017/" + str(month) + "/" + str(calendar.monthrange(2017, month)[1])
@@ -28,4 +28,4 @@ if __name__ == '__main__':
     # for i in range(0,len(name_list)):
     #     infos(ID=name_list[i], month=7)
     #     print "   "
-    infos(ID="0107063", month=8)
+    infos(ID=str(sys.argv[1]), month=int(sys.argv[2]))
