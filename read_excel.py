@@ -17,7 +17,6 @@ import time
 
 from open_url import get_info_from_web
 
-
 def get_init_date(source_book='attendance.xlsx'):
     """
     输入excel表格的名字 随后把所有读到的日期返回到一个list中
@@ -106,11 +105,12 @@ def overtime_money(after_duplicate_removal):
     weekday_total = 0.0
     for i in range(len(weekday_overtime)):
         weekday_total = weekday_overtime[i] + weekday_total
-    print u'工作日加班时长为：' + str(weekday_total)
-    print u'餐补为：' + str(subsidy)
+    info1 = u'weekday add:   ' + str(weekday_total)
+    info2 = u'money to eat:   ' + str(subsidy)
     weekend_total = 0.0
     for i in range(len(weekend_overtime)):
         weekend_total = weekend_overtime[i] + weekend_total
-    print u'周末加班时长为：' + str(weekend_total)
-
+    info3 = u'weekend add:   ' + str(weekend_total)
+    info = info1+'\n'+info2+'\n'+info3
+    return info
 

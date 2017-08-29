@@ -13,7 +13,7 @@
 from selenium import webdriver
 import time
 import datetime
-
+from pypinyin import pinyin
 
 def get_info_from_web(ID="000107063", start="2017/06/01", end="2017/06/30"):
     driver = webdriver.Chrome()
@@ -28,14 +28,18 @@ def get_info_from_web(ID="000107063", start="2017/06/01", end="2017/06/30"):
     time.sleep(1)
     driver.find_element_by_name("ctl07").click()  # 点击搜索按钮
     time.sleep(1)
-    print driver.find_element_by_xpath(".//*[@id='GridView1']/tbody/tr[2]/td[2]").text
+    name = driver.find_element_by_xpath(".//*[@id='GridView1']/tbody/tr[2]/td[2]").text
+    name = pinyin(name)
+    # for x in name:
+    #     print x
     date_info = []
     for x in range(2, 12):
         xpath = ".//*[@id='GridView1']/tbody/tr[" + str(x) + "]/td[3]"
         info = driver.find_element_by_xpath(xpath).text
         date_info.append(info)
     page_total = len(
-        driver.find_element_by_xpath(".//*[@id='GridView1']/tbody/tr[12]/td/table/tbody").find_elements_by_tag_name(
+        driver.find_element_by_xpath(".//*[@id='GridView1']/tbody/tr[12]/td/ta"
+                                     "ble/tbody").find_elements_by_tag_name(
             "td"))  # 查看一共有几页信息
     for i in range(2, page_total):
         driver.find_element_by_link_text(str(i)).click()
