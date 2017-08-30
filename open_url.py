@@ -15,8 +15,9 @@ import time
 import datetime
 from pypinyin import pinyin
 
+
 def get_info_from_web(ID="000107063", start="2017/06/01", end="2017/06/30"):
-    driver = webdriver.Chrome()
+    driver = webdriver.PhantomJS()
     driver.get("http://kaoqin.geely.auto/")
     driver.maximize_window()
     driver.find_element_by_id("UserId").clear()

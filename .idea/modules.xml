@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/kaoqin.iml" filepath="$PROJECT_DIR$/.idea/kaoqin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../17dzWebUI/.idea/yqdzautoui.iml" filepath="$PROJECT_DIR$/../17dzWebUI/.idea/yqdzautoui.iml" />
     </modules>
   </component>
 </project>

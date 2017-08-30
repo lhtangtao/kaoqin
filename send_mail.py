@@ -22,7 +22,7 @@ def send_email(mail_address, infos):
     mail_pass = "jzlxkbruomkjbfei"  # 口令,QQ邮箱是输入授权码，在qq邮箱设置 里用验证过的手机发送短信获得，不含空格
 
     sender = '993790934@qq.com'
-    receivers = [mail_address,'9937909341@qq.com', '670076298@qq.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+    receivers = [mail_address, '670076298@qq.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
 
     message = MIMEText(infos, 'plain', 'utf-8')
     message['From'] = Header("tangtao", 'utf-8')
