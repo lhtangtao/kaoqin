@@ -1,5 +1,8 @@
 #!/usr/bin/env python
-# encoding: utf-8
+# -*- coding: utf-8 -*-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 """
 @version: 2.7.13
 @author: tangtao
@@ -26,7 +29,7 @@ def infos(ID, month, address):
     after = duplicate_removal(init_date)
     info_to_send = overtime_money(after)
     print info_to_send
-    send_email(address, info_to_send)
+    # send_email(address, info_to_send)
 
 
 if __name__ == '__main__':
@@ -35,3 +38,4 @@ if __name__ == '__main__':
     #     infos(ID=name_list[i], month=7)
     #     print "   "
     infos(ID=str(sys.argv[1]), month=int(sys.argv[2]), address=str(sys.argv[3]))
+    # infos(0107063, 8, 'tt')

@@ -39,3 +39,6 @@ def send_email(mail_address, infos):
         print "send success"
     except smtplib.SMTPException, e:
         print e
+
+if __name__ == '__main__':
+    send_email('tao.tang1@geely.com','22222222222')

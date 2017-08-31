@@ -1,5 +1,9 @@
 #!/usr/bin/env python
-# encoding: utf-8
+# -*- coding: utf-8 -*-
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 """
 @version: 2.7.13
 @author: tangtao
@@ -16,6 +20,7 @@ import datetime
 import time
 
 from open_url import get_info_from_web
+
 
 def get_init_date(source_book='attendance.xlsx'):
     """
@@ -54,8 +59,11 @@ def duplicate_removal(date):
     if date[0].day != date[1].day:  # 如果第一天只有一个考勤记录则删除
         del date[0]
     date_len = len(date)
-    if date[date_len - 1].day != date[date_len-2].day:  # 如果最后一天只有一天考勤记录则删除
+    if date[date_len - 1].day != date[date_len - 2].day:  # 如果最后一天只有一天考勤记录则删除
         del date[date_len - 1]
+    for z in range(len(date)):
+        print date[z] + datetime.timedelta(
+            hours=7)
     return date  # 返回去重后的数组
 
 
@@ -81,36 +89,38 @@ def overtime_money(after_duplicate_removal):
         if weekday_date[i + 1] - weekday_date[i] >= datetime.timedelta(hours=12):  # 加班超过三小时才算加班
             time_delay = weekday_date[i + 1] - weekday_date[i]
             overtime_day = time_delay - datetime.timedelta(hours=9)  # 当日加班时间
-            overtime_day = str(overtime_day)
-            if int(overtime_day.split(':')[1]) >= 30:  # 如果加班时间有半小时多出
-                overtime_day_verbose = float(overtime_day.split(":")[0]) + 0.5
-                weekday_overtime.append(overtime_day_verbose)
-            else:
-                overtime_day_verbose = float(overtime_day.split(":")[0])
-                weekday_overtime.append(overtime_day_verbose)
+            print u'上班时间为' + str(weekday_date[i] + datetime.timedelta(hours=7)) + u'下班时间为' + str(
+                weekday_date[i + 1] + datetime.timedelta(hours=7)) + u'工作日加班' + str(overtime_day)
+            weekday_overtime.append(overtime_day)
+            # if int(overtime_day.split(':')[1]) >= 30:  # 如果加班时间有半小时多出
+            #     overtime_day_verbose = float(overtime_day.split(":")[0]) + 0.5
+            #     weekday_overtime.append(overtime_day_verbose)
+            # else:
+            #     overtime_day_verbose = float(overtime_day.split(":")[0])
+            #     weekday_overtime.append(overtime_day_verbose)
     for i in range(0, len(weekend_date), 2):  # 计算周末的加班和餐补
         if weekend_date[i + 1] - weekend_date[i] >= datetime.timedelta(hours=4):  # 周末加班超过4小时才能拿餐补
             subsidy = subsidy + 15
             if weekend_date[i + 1] - weekend_date[i] >= datetime.timedelta(hours=8):
                 subsidy = subsidy + 15
         time_delay_weekend = weekend_date[i + 1] - weekend_date[i]
-        overtime_day_weekend = str(time_delay_weekend)
-        if int(overtime_day_weekend.split(':')[1]) >= 30:  # 如果加班时间有半小时多出
-            overtime_day_verbose = float(overtime_day_weekend.split(":")[0]) + 0.5
-            weekend_overtime.append(overtime_day_verbose)
-        else:
-            overtime_day_verbose = float(overtime_day_weekend.split(":")[0])
-            weekend_overtime.append(overtime_day_verbose)
-
-    weekday_total = 0.0
-    for i in range(len(weekday_overtime)):
+        overtime_day_weekend = time_delay_weekend
+        print u'上班时间' + str(weekend_date[i + 1]) + u'下班时间' + str(weekend_date[i]) + u'周末加班 ' + str(overtime_day_weekend)
+        weekend_overtime.append(overtime_day_weekend)
+        # if int(overtime_day_weekend.split(':')[1]) >= 30:  # 如果加班时间有半小时多出
+        #     overtime_day_verbose = float(overtime_day_weekend.split(":")[0]) + 0.5
+        #     weekend_overtime.append(overtime_day_verbose)
+        # else:
+        #     overtime_day_verbose = float(overtime_day_weekend.split(":")[0])
+        #     weekend_overtime.append(overtime_day_verbose)
+    weekday_total = weekday_overtime[0]
+    for i in range(1, len(weekday_overtime)):
         weekday_total = weekday_overtime[i] + weekday_total
     info1 = u'weekday add:   ' + str(weekday_total)
     info2 = u'money to eat:   ' + str(subsidy)
-    weekend_total = 0.0
-    for i in range(len(weekend_overtime)):
+    weekend_total = weekend_overtime[0]
+    for i in range(1, len(weekend_overtime)):
         weekend_total = weekend_overtime[i] + weekend_total
     info3 = u'weekend add:   ' + str(weekend_total)
-    info = info1+'\n'+info2+'\n'+info3
+    info = info1 + '\n' + info2 + '\n' + info3
     return info
-
