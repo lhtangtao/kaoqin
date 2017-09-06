@@ -117,14 +117,20 @@ def overtime_money(after_duplicate_removal):
     weekday_total = weekday_overtime[0]
     for i in range(1, len(weekday_overtime)):
         weekday_total = weekday_overtime[i] + weekday_total
-    info1 = u'weekday add:   ' + str(weekday_total)
+    print 'weekday initial data is :'+str(weekday_total)
+    day_to_hour = int(weekday_total.days) * 24
+    real_hour = float(weekday_total.seconds)/3600+float(day_to_hour)
+    info1 = u'weekday add:   ' + str(real_hour)+'H'
     info2 = u'money to eat:   ' + str(subsidy)
-    if len(weekend_overtime)!=0:
+    if len(weekend_overtime) != 0:
         weekend_total = weekend_overtime[0]
         for i in range(1, len(weekend_overtime)):
             weekend_total = weekend_overtime[i] + weekend_total
-        info3 = u'weekend add:   ' + str(weekend_total)
-        info = info1 + '\n' + info2 + '\n' + info3
+        print 'weekend initial data is :' + str(weekend_total)
+        end_to_hour=int(weekend_total.days) * 24
+        real_end_hour=float(weekend_total.seconds)/3600+float(end_to_hour)
+        info3 = u'weekend add:   ' + str(real_end_hour)
+        info = info1 + '\n' + info2 + '\n' + info3+'H'
     else:
         info = info1 + '\n' + info2
     return info
