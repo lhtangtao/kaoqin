@@ -38,4 +38,4 @@ if __name__ == '__main__':
     #     infos(ID=name_list[i], month=7)
     #     print "   "
     infos(ID=str(sys.argv[1]), month=int(sys.argv[2]), address=str(sys.argv[3]))
-    # infos(0107063, 8, 'tt')
+    # infos(0107063, 9, 'tt')

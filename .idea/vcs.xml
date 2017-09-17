@@ -3,6 +3,8 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../auto_jenkins" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../for_liu_excel" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../fxdata_spider" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../lianjia" vcs="Git" />
   </component>
 </project>

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 """
@@ -23,6 +24,12 @@ def get_info_from_web(ID="000107063", start="2017/06/01", end="2017/06/30"):
     driver = webdriver.PhantomJS()
     driver.get("http://kaoqin.geely.auto/")
     driver.maximize_window()
+    time.sleep(1)
+    title = driver.title
+    if title != u'考勤查询':
+        driver.quit()
+        print u'网站没有打开，可能是连接出现问题。请手动排查失败原因'
+        sys.exit()
     driver.find_element_by_id("UserId").clear()
     driver.find_element_by_id("UserId").send_keys(ID)
     driver.find_element_by_id("StartDate").clear()
@@ -36,6 +43,7 @@ def get_info_from_web(ID="000107063", start="2017/06/01", end="2017/06/30"):
     name = pinyin(name)
     # for x in name:
     #     print x
+
     date_info = []
     for x in range(2, 12):
         xpath = ".//*[@id='GridView1']/tbody/tr[" + str(x) + "]/td[3]"

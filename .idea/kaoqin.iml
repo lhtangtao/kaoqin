@@ -7,5 +7,7 @@
     <orderEntry type="module" module-name="yqdzautoui" />
     <orderEntry type="module" module-name="auto_jenkins" />
     <orderEntry type="module" module-name="fxdata_spider" />
+    <orderEntry type="module" module-name="lianjia" />
+    <orderEntry type="module" module-name="for_liu_excel" />
   </component>
 </module>

@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../auto_jenkins/.idea/auto_jenkins.iml" filepath="$PROJECT_DIR$/../auto_jenkins/.idea/auto_jenkins.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../for_liu_excel/.idea/for_liu_excel.iml" filepath="$PROJECT_DIR$/../for_liu_excel/.idea/for_liu_excel.iml" />
       <module fileurl="file://$PROJECT_DIR$/../fxdata_spider/.idea/fxdata_spider.iml" filepath="$PROJECT_DIR$/../fxdata_spider/.idea/fxdata_spider.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/kaoqin.iml" filepath="$PROJECT_DIR$/.idea/kaoqin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../lianjia/.idea/lianjia.iml" filepath="$PROJECT_DIR$/../lianjia/.idea/lianjia.iml" />
       <module fileurl="file://$PROJECT_DIR$/../17dzWebUI/.idea/yqdzautoui.iml" filepath="$PROJECT_DIR$/../17dzWebUI/.idea/yqdzautoui.iml" />
     </modules>
   </component>
